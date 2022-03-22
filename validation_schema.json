@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "load": {
+      "type": "integer"
+    },
+    "fuels": {
+      "type": "object",
+      "properties": {
+        "gas(euro/MWh)": {
+          "type": "number"
+        },
+        "kerosine(euro/MWh)": {
+          "type": "number"
+        },
+        "co2(euro/ton)": {
+          "type": "number"
+        },
+        "wind(%)": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "gas(euro/MWh)",
+        "kerosine(euro/MWh)",
+        "co2(euro/ton)",
+        "wind(%)"
+      ]
+    },
+    "powerplants": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "efficiency": {
+              "type": "number"
+            },
+            "pmin": {
+              "type": "number"
+            },
+            "pmax": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "name",
+            "type",
+            "efficiency",
+            "pmin",
+            "pmax"
+          ]
+        },
+      ]
+    }
+  },
+  "required": [
+    "load",
+    "fuels",
+    "powerplants"
+  ]
+}
