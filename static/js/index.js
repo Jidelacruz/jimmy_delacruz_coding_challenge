@@ -22,5 +22,16 @@ library.json = {
       }
    };
 
-var planets = [{ name: 'Earth', order: 3, stats: { life: true, mass: 5.9736 * Math.pow(10, 24) } }, { name: 'Saturn', order: 6, stats: { life: null, mass: 568.46 * Math.pow(10, 24) } }];
-$('#res').html(library.json.prettyPrint(planets));
+function Submit() {
+    var text = document.getElementById("text_json").value
+     $.ajax({
+        type: "POST",
+        url: "/productionplan",
+        dataType: "json",
+        contentType: 'application/json',
+        data: text,
+        success: function (msg) {
+            $('#res').html(library.json.prettyPrint(msg));
+        },
+    });
+}

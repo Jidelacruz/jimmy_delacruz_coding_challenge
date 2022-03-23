@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+</head>
+<body>
+
+<h1>Show File-select Fields</h1>
+
+<h3>which allows only one file to be chosen:</h3>
+    <form action="/action_page.php">
+      <label >Put your json:</label>
+      <textarea id="text_json" name="w3review" rows="50" cols="50"> </textarea><br><br>
+         <input type="button"  value="Send" onclick="Submit()"/>
+    </form>
+    <br><br>
+    <h3>Result: </h3>
+
+    <pre><code id=res></code></pre>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="{{url_for('static',filename='js/index.js')}}"></script>
+</html>
