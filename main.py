@@ -1,7 +1,5 @@
-import json
-import logging
 
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 import Algo_compute_challenge
 
@@ -9,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return '<h1>Hello from Flask & Docker</h2>'
+    return render_template('./views/index.html')
 
 @app.route('/productionplan', methods=['POST'])
 def production_plan():
