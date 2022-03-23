@@ -14,6 +14,6 @@ RUN pip3 install -r requirements.txt
 # copy every content from the local file to the image
 COPY . .
 
-EXPOSE 8888
-ENTRYPOINT [ "python3" ]
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+ENV FLASK_APP=main.py
+
+CMD [ "python", "-m" , "flask", "run", "--host=0.0.0.0","--port=8888"]
