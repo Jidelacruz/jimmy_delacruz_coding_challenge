@@ -1,5 +1,4 @@
 import json
-from turtledemo.paint import switchupdown
 
 class Engine:
     def __init__(self, json_data,fuels):
@@ -29,16 +28,17 @@ def production_data(data):
     list_powerplants = []
     #create a list of object engine
     for e in data["powerplants"] :
-        engine_obj =  Engine(e,fuels)
+        engine_obj = Engine(e,fuels)
         list_powerplants.append(engine_obj)
 
     #sorted list pmin
     list_powerplants.sort(key=lambda x: x.cost_per_unity)
-    # Compute pmin part
+    # Algorithme
     value = 0
     index = 0
     while(value < var_load ):
         elem = list_powerplants[index]
+        #Compute load of the pmax, ex: wind with 60% of efficiency
         p_val = compute_load(fuels, elem.type, elem.pmax)
         if(value+p_val < var_load):
             if(index+1 < len(list_powerplants)):
@@ -63,6 +63,7 @@ def production_data(data):
             index+=1
 
     return create_json_response(list_powerplants)
+#Create the response to send
 def create_json_response(list_powerplants):
     list = []
     for e in list_powerplants:
@@ -73,6 +74,7 @@ def create_json_response(list_powerplants):
 
     return json.dumps(list)
 
+#Compute the cost of fuel
 def compute_cost(Fuel_price,efficiency,p):
     return Fuel_price*(p/efficiency)
 
@@ -81,6 +83,7 @@ def compute_load(fuels,type,p):
         return p*fuels[type]/100
     else:
         return p
+    #Mapping The different cost of fuel
 def map_fuels(data):
     fuels = {}
     fuels["gasfired"] = data["gas(euro/MWh)"]
