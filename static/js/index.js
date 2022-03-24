@@ -1,3 +1,15 @@
+ var socket;
+$(document).ready(function() {
+console.log('http://' + document.domain + ':' + location.port)
+    socket = io();
+    socket.on('connect', function() {
+        socket.emit('my event', {data: 'I\'m connected!'});
+    });
+    socket.on('message', function(msg) {
+        $('#res').html(library.json.prettyPrint(JSON.parse(msg)));
+    });
+});
+
 if (!library)
    var library = {};
 
@@ -31,7 +43,7 @@ function Submit() {
         contentType: 'application/json',
         data: text,
         success: function (msg) {
-            $('#res').html(library.json.prettyPrint(msg));
+           // $('#res').html(library.json.prettyPrint(msg));
         },
     });
 }

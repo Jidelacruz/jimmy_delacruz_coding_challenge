@@ -10,7 +10,7 @@
 <h3>which allows only one file to be chosen:</h3>
     <form action="/action_page.php">
       <label >Put your json:</label>
-      <textarea id="text_json" name="w3review" rows="50" cols="50"> </textarea><br><br>
+      <textarea id="text_json" name="w3review" rows="40" cols="50"> </textarea><br><br>
          <input type="button"  value="Send" onclick="Submit()"/>
     </form>
     <br><br>
@@ -21,4 +21,6 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="{{url_for('static',filename='js/index.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+
 </html>

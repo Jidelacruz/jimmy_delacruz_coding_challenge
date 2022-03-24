@@ -61,6 +61,7 @@ def production_data(data):
                 elem.load = compute_load(fuels,elem.type,elem.pmin)
             list_powerplants[index] = elem
             index+=1
+
     return create_json_response(list_powerplants)
 def create_json_response(list_powerplants):
     list = []
